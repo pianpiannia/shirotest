@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+
+        <!-- 添加shiro支持 -->
+<listener>
+    <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+</listener>
+
+<filter>
+<filter-name>ShiroFilter</filter-name>
+<filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+<init-param>
+    <param-name>configPath</param-name>
+    <param-value>/WEB-INF/shiro.ini</param-value>
+</init-param>
+</filter>
+
+
+<filter-mapping>
+<filter-name>ShiroFilter</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>demo.shiro.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>demo.shiro.servlet.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TeacherRoleServlet</servlet-name>
+        <servlet-class>demo.shiro.servlet.TeacherRoleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherRoleServlet</servlet-name>
+        <url-pattern>/student</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>demo.shiro.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TeacherPermsServlet</servlet-name>
+        <servlet-class>demo.shiro.servlet.TeacherPermsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherPermsServlet</servlet-name>
+        <url-pattern>/teacher</url-pattern>
+    </servlet-mapping>
+</web-app>
