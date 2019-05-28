@@ -25,6 +25,8 @@ public class LoginServlet extends HttpServlet {
 
         UsernamePasswordToken token = new UsernamePasswordToken(username,password);
 
+
+
         try {
             subject.login(token);
             System.out.println("认证成功");
